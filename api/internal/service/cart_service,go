@@ -1,0 +1,19 @@
+package service
+
+import (
+	"context"
+
+	"github.com/biniyam-tech/store/api/internal/models"
+	"github.com/biniyam-tech/store/api/internal/repository"
+)
+
+type CartService struct {
+	Repo *repository.CartRepo
+}
+
+func (s *CartService) Validate(ctx context.Context, items []models.ValidateCartItem) (models.ValidateCartResponse, error) {
+	if len(items) == 0 {
+		return models.ValidateCartResponse{OK: false, Issues: []models.CartIssue{{Problem: "empty_cart"}}}, nil
+	}
+	return s.Repo.Validate(ctx, items)
+}

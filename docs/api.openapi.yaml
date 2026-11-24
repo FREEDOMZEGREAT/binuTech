@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: BinuTech API
+  version: 0.1.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /health:
+    get:
+      summary: API health check
+      responses:
+        "200":
+          description: API is healthy
+
